@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('war1') {
+        stage('war2') {
             steps {
                 git branch: 'war1', url: 'https://github.com/mahesh-123123/web.git'
             }
