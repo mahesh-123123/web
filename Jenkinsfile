@@ -25,12 +25,12 @@ pipeline {
         }
         stage('login') {
             steps {
-                sh  'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR'
+                login  'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR'
             }
         }
         stage('push') {
             steps {
-                sh 'docker push maheshreddy123/war5:latest'
+                push 'docker push maheshreddy123/war5:latest'
             }
         } 
         stage('email') {
