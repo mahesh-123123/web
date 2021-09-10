@@ -18,6 +18,21 @@ pipeline {
                 deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8080/')], contextPath: 'war2', war: '**/*.war'
             }
         }
+        stage('war2') {
+            steps {
+                
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
         stage('email') {
             steps {
                 mail bcc: '', body: '''hi welcome to jenkins email alerts
