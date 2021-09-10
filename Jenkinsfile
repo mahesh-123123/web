@@ -14,7 +14,7 @@ pipeline {
             steps {
                 bat 'mvn clean'
                 bat 'mvn install'
-                sh 'docker push maheshreddy123/war5:latest . '
+              
             
             }
         }
