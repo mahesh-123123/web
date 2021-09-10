@@ -23,7 +23,7 @@ pipeline {
                 deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8080/')], contextPath: 'war5', war: '**/*.war'
             }
         }
-        stage('login') {
+       /* stage('login') {
             steps {
                 login  'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR'
             }
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 push 'docker push maheshreddy123/war5:latest'
             }
-        } 
+        } */
         stage('email') {
             steps {
                 mail bcc: '', body: '''hi welcome to jenkins email alerts
@@ -41,9 +41,9 @@ pipeline {
             }
         }
     }
-         post {
+         /*post {
             always {
                 sh 'docker logout'
             }
-        }
+        }*/
 }
