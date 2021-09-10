@@ -38,10 +38,10 @@ pipeline {
                 msr''', cc: '', from: '', replyTo: '', subject: 'jenkins job', to: 'mmssrraju123@gmail.com'
             }
         }
+    }
          post {
             always {
                 sh 'docker logout'
             }
         }
-    }
 }
