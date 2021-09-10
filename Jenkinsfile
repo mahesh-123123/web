@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment{
+        DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+    }
 
     stages {
         stage('war2') {
@@ -15,7 +18,22 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8080/')], contextPath: 'war3', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8080/')], contextPath: 'war4', war: '**/*.war'
+            }
+        }
+        stage('login') {
+            steps {
+                sh ' echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR
+            }
+        }
+        stage('push') {
+            steps {
+                sh 'docker push maheshreddy123/war4:latest'
+            }
+        }
+        post {
+            always {
+                sh 'docker logout'
             }
         }
         
