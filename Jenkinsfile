@@ -20,12 +20,12 @@ pipeline {
         }
         stage('push') {
             steps {
-                 /*docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')*/ 
+                /*docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
 
                     def customImage = docker.build("maheshreddy123/dockerwebapp1")
 
         /* Push the container to the custom Registry */
-                        customImage.push()
+                /*customImage.push() }*/
                             
             }
         }
