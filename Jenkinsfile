@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    agent {label 'linux'}
     environment{
         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     }
@@ -15,11 +14,13 @@ pipeline {
             steps {
                 bat 'mvn clean'
                 bat 'mvn install'
+                 sh 'docker push maheshreddy123/war5:latest . '
+            
             }
         }
         stage('deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8080/')], contextPath: 'war4', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8080/')], contextPath: 'war5', war: '**/*.war'
             }
         }
         stage('login') {
@@ -29,7 +30,7 @@ pipeline {
         }
         stage('push') {
             steps {
-                sh 'docker push maheshreddy123/war4:latest'
+                sh 'docker push maheshreddy123/war5:latest'
             }
         } 
         stage('email') {
