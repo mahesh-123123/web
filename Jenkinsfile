@@ -30,18 +30,17 @@ pipeline {
             steps {
                 sh 'docker push maheshreddy123/war4:latest'
             }
-        }
-        post {
-            always {
-                sh 'docker logout'
-            }
-        }
-        
+        } 
         stage('email') {
             steps {
                 mail bcc: '', body: '''hi welcome to jenkins email alerts
                 thanks
                 msr''', cc: '', from: '', replyTo: '', subject: 'jenkins job', to: 'mmssrraju123@gmail.com'
+            }
+        }
+         post {
+            always {
+                sh 'docker logout'
             }
         }
     }
