@@ -6,7 +6,7 @@
 ====================
 <html>
 <head>
-	<title> mm form <title>
+	<title> mm form </title>
 </head>
 <body>
      <form>	
@@ -14,7 +14,7 @@
 	  <tr>
 		<td>
 			.....................
-		<td>
+		</td>
 		<td>
 			settings.........................
 		</td>
