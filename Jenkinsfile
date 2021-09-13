@@ -12,15 +12,15 @@ pipeline {
         }
         stage('build') {
             steps {
-                bat 'mvn clean'
-                bat 'mvn install'
+                sh 'mvn clean'
+                sh 'mvn install'
               
             
             }
         }
         stage('deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8080/')], contextPath: 'war6', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8090/')], contextPath: 'war6', war: '**/*.war'
             }
         }
        /* stage('login') {
