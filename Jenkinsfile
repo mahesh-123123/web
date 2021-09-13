@@ -5,7 +5,7 @@ pipeline {
     }*/
 
     stages {
-        stage('war2') {
+        stage('SCM') {
             steps {
                 git branch: 'war1', url: 'https://github.com/mahesh-123123/web.git'
             }
