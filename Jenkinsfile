@@ -14,13 +14,14 @@ pipeline {
             steps {
                 sh 'mvn clean'
                 sh 'mvn install'
+                sh 'mvn package'
               
             
             }
         }
         stage('deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8090/')], contextPath: 'war6', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8090/')], contextPath: 'war7', war: '**/*.war'
             }
         }
        /* stage('login') {
@@ -35,7 +36,7 @@ pipeline {
         } */
         stage('email') {
             steps {
-                mail bcc: '', body: '''hi welcome to jenkins email alerts
+                mail bcc: '', body: '''hi welcome to jenkins email alerts. welcome to deploy-6.
                 thanks
                 msr''', cc: '', from: '', replyTo: '', subject: 'jenkins job', to: 'mmssrraju123@gmail.com'
             }
